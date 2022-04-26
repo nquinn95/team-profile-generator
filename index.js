@@ -3,6 +3,9 @@ const inquirer = require('inquirer');
 
 //including class
 const Employee = require('./lib/Employee');
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
 
 
 
@@ -27,11 +30,9 @@ inquirer.prompt([
     name: "manOffice",
     message: "What is your office number?"
 }])
-.then((data) => {
-    console.log(data.manName)
-    console.log(data.manID)
-    console.log(data.manEmail)
-    console.log(data.manOffice)
+.then((answers) => {
+    
+
 })
 
 
