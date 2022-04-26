@@ -1,4 +1,5 @@
 //including inquirer
+const fs = require('fs');
 const inquirer = require('inquirer');
 
 //including class
@@ -7,7 +8,7 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
-
+const team = [];
 
 inquirer.prompt([
 {
@@ -31,17 +32,119 @@ inquirer.prompt([
     message: "What is your office number?"
 }])
 .then((answers) => {
-    
-
+    var manInput = new Manager(
+        answers.manName,
+        answers.manId,
+        answers.manEmail,
+        answers.manOffice
+    );
+    team.push(manInput);
+    buildTeam();
 })
 
 
+const addEngineer = function() {
+    inquirer
+        .prompt([
+            {
+            type: "input",
+            name: "engName",
+            message: "What is their name? ",
+            },
+            {
+                type: "input",
+                name: "engId",
+                message: "What is their ID? ",
+            },
+            {
+                type: "input",
+                name: "engEmail",
+                message: "What is their email? ",
+            },
+            {
+                type: "input",
+                name: "engGit",
+                message: "What is their gitHub? ",
+            },
+        ])
+        .then((answers) => {
+            var engInput = new Engineer(
+                answers.engName,
+                answers.engId,
+                answers.engEmail,
+                answers.engGit,
+            );
+            
+            team.push(engInput);
+            buildTeam();
+        });
+};
+
+function addIntern(){
+    inquirer
+    .prompt([
+        {
+            type: "input",
+            name: "intName",
+            message: "What is their name? "
+        },
+        {
+            type: "input",
+            name: "intId",
+            message: "What is their ID? "
+        },
+        {
+            type: "input",
+            name: "intEmail",
+            message: "What is their email? "
+        },
+        {
+            type: "input",
+            name: "intSchool",
+            message: "What is their school? "
+        }
+    ])
+    .then((answers) => {
+        var intInput = new Intern(
+            answers.intName,
+            answers.intId,
+            answers.intEmail,
+            answers.intSchool
+        );
+
+        team.push(intInput);
+        buildTeam();
+    }
+}
 
 
 
 
-
-
+function buildTeam(){
+    inquirer
+    .prompt([
+        {
+        type: "list",
+        name: "teamMem",
+        message: "What would you like to do next? ",
+        choices: ["Add Engineer", "Add Intern"]
+        }
+    ])
+    .then((data) => {
+        if (data.teamMem == "Add an Engineer"){
+            addEngineer();
+        }
+        else if (data.teamMem == "Add an Intern") {
+            addIntern(); 
+        }
+        else {
+            const html = templateHTML(team);
+            fstat.writeFile(`./dist/index.html`, html, (err) =>
+            err ? console.log(err) : console.log("Success!")
+            );
+        }
+    });
+};
 
 
 // const baseQues = [
