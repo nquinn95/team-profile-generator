@@ -15,6 +15,20 @@ test("Can construct an Engineer from super Employee", () => {
     expect(example.name).toBe(exName) && expect(example.exId).toBe(id) && expect(example.email).toBe(exEmail);
 });
 
+test("Test that getGithub() returns github", () => {
+    const exGit = "new34"
+    const example = new Engineer("Juno", 5, "test@example.com", exGit)
+    expect(example.getGitHub()).toBe(exGit);
+});
+
+test("Test that getRole() returns Engineer", () => {
+    const role = "Engineer";
+    const example = new Engineer("Juno", 10, "test@example.com", "test123")
+    expect(example.getRole()).toBe(role);
+});
+
+
+
 
 
 
