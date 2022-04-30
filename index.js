@@ -114,7 +114,7 @@ function addIntern(){
 
         team.push(intInput);
         buildTeam();
-    }
+    })
 }
 
 
@@ -139,7 +139,7 @@ function buildTeam(){
         }
         else {
             const html = templateHTML(team);
-            fstat.writeFile(`./dist/index.html`, html, (err) =>
+            fs.writeFile(`./dist/index.html`, html, (err) =>
             err ? console.log(err) : console.log("Success!")
             );
         }
