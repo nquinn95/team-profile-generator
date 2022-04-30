@@ -1,6 +1,6 @@
 //require the employee from lib folder
 
-const { exportAllDeclaration } = require("@babel/types");
+// const { exportAllDeclaration } = require("@babel/types");
 const Engineer = require("../lib/Engineer");
 
 test("Can instantiate Engineer instance", () => {
