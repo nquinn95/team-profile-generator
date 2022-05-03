@@ -26,17 +26,18 @@ inquirer.prompt([
     name: "manEmail",
     message: "What is your email?"
 },
-{
-    type: "input",
-    name: "manOffice",
-    message: "What is your office number?"
-}])
+// {
+//     type: "input",
+//     name: "manOffice",
+//     message: "What is your office number?"
+// }
+])
 .then((answers) => {
     var manInput = new Manager(
         answers.manName,
         answers.manId,
         answers.manEmail,
-        answers.manOffice
+        // answers.manOffice
     );
     team.push(manInput);
     buildTeam();

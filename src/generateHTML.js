@@ -23,7 +23,7 @@ function generateHTML(team) {
          ${team.map((member) => {
         return `<div class="card" style="width: 18rem;">
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">${member}</li>
+              <li class="list-group-item">${member.name}</li>
               <li class="list-group-item">${member.getRole()}</li>
               <li class="list-group-item">${member.id}</li>
               <li class="list-group-item">${member.email}</li>
