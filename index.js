@@ -1,7 +1,7 @@
 //including inquirer
 const fs = require('fs');
 const inquirer = require('inquirer');
-
+const generateHTML = require('./src/generateHTML')
 //including class
 const Employee = require('./lib/Employee');
 const Manager = require('./lib/Manager');
@@ -114,7 +114,7 @@ function addIntern(){
 
         team.push(intInput);
         buildTeam();
-    })
+    });
 }
 
 
@@ -127,14 +127,14 @@ function buildTeam(){
         type: "list",
         name: "teamMem",
         message: "What would you like to do next? ",
-        choices: ["Add Engineer", "Add Intern"]
+        choices: ["Add Engineer", "Add Intern", "Finish"]
         }
     ])
     .then((data) => {
-        if (data.teamMem == "Add an Engineer"){
+        if (data.teamMem == "Add Engineer"){
             addEngineer();
         }
-        else if (data.teamMem == "Add an Intern") {
+        else if (data.teamMem == "Add Intern") {
             addIntern(); 
         }
         else {

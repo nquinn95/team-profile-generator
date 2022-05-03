@@ -1,5 +1,0 @@
-
-function generateHTML(data){
-
-    return ` `
-}
